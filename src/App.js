@@ -1,23 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
-
+import MyComponent from "./components/MyComponent.js";
+import Lifecycle from "./components/Lifecycle.js";
+import * as React from "react";
 function App() {
+  const [isShow, setShow] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log("useEffect called");
+  }, [isShow]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Lifecycle />
+
+      {/* <MyComponent show={isShow} />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault;
+          console.log("form submitted");
+        }}
+      >
+        <input
+          type="text"
+          onChange={() => {
+            console.log("changed");
+          }}
+        />
+        <button
+          type="submit"
+          onClick={() => {
+            setShow(true);
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          Submit
+        </button>
+      </form> */}
     </div>
   );
 }
